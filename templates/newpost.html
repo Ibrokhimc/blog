@@ -1,0 +1,6 @@
+
+<h1>NewPost</h1>
+<form action="Post" class="NewPost">{% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">New Post</button>
+</form>

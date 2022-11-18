@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>{% block title %}iBo's Blog{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body class="container">
+<style>
+
+
+  .mega-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+  }
+
+
+
+  /* #hoverable Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .hoverable {
+    position: static;
+  }
+
+  .hoverable > a:after {
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .hoverable:hover .mega-menu {
+    display: block;
+  }
+
+
+  /* #toggle Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  .toggleable > label:after {
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+  .toggle-input:not(checked) ~ .mega-menu {
+    display: none;
+  }
+
+  .toggle-input:checked ~ .mega-menu {
+    display: block;
+  }
+
+  .toggle-input:checked + label {
+    color: white;
+    background: #2c5282; /*@apply bg-blue-800 */
+  }
+
+  .toggle-input:checked ~ label:after {
+    content: "\25B2";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  </style>
+</head>
+
+<body class="bg-gray-200 font-sans leading-normal tracking-normal">
+<nav class="relative bg-white border-b-2 border-gray-300 text-gray-900">
+  <div class="container mx-auto flex justify-between">
+    <div class="relative block p-4 lg:p-6 text-xl text-blue-600 font-bold">ibo Blog</div>
+    <ul class="flex">
+
+      <!--Regular Link-->
+      <li class="hover:bg-blue-100 hover:text-white">
+        <a href="{% url 'page:landing_page' %}" class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">intro</a>
+      </li> <li class="hover:bg-blue-100 hover:text-white">
+        <a href="https://iboportfolio.netlify.app" class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">About</a>
+      </li> <li class="hover:bg-blue-100 hover:text-white">
+        <a href="https://1link.st/ibrokhmali" class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Contact</a>
+      </li></li> <li class="hover:bg-blue-100 hover:text-white">
+        <a href="{% url 'page:userpage' %}" class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Post+</a>
+      </li>
+
+
+      <!--Toggleable Link-->
+
+          <!-- ## Toggleable Link Template ##
+
+		  <li class="toggleable"><input type="checkbox" value="selected" id="toggle-xxx" class="toggle-input"><label for="toggle-xxx" class="cursor-pointer">Click</label><div role="toggle" class="mega-menu">
+			Add your mega menu content
+			</div></li>
+
+		  -->
+
+          <!--Hoverable Link-->
+          <!-- ## Hoverable Link Template ##
+
+		  <li class="hoverable hover:bg-blue-800 hover:text-white"><a href="#" class="relative block">x</a><div class="mega-menu">
+			Add your mega menu content
+			</div></li>
+
+		  -->
+        </ul>
+      </div>
+    </nav>
+
+<main>
+    {% block content %}
+
+    {% endblock %}
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>
